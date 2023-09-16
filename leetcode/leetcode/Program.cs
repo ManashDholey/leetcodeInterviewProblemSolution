@@ -1,0 +1,19 @@
+﻿// See https://aka.ms/new-console-template for more information
+using leetcode;
+
+Console.WriteLine("Hello, World!");
+int[] nums = { 2, 7, 11, 15 };
+int target = 9;
+TwoSumSolution twoSumSolution = new TwoSumSolution();
+int[] result = twoSumSolution.TwoSum(nums, target);
+
+if (result.Length == 2)
+{
+    Console.WriteLine("Indices of elements that add up to the target:");
+    Console.WriteLine("Index 1: " + result[0]);
+    Console.WriteLine("Index 2: " + result[1]);
+}
+else
+{
+    Console.WriteLine("No solution found.");
+}

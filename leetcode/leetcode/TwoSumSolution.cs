@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace leetcode
 {
-    public class TwoSumSolution
+    public class TwoSumSolution: IDisposable
     {
+        private bool disposed = false;
+        
+
         public int[] TwoSum(int[] nums, int target)
         {
-            int[] result = TwoSumFun(nums, target);
-            return result;
+            return TwoSumFun(nums, target);
         }
         private int[] TwoSumFun(int[] nums, int target)
         {
@@ -37,6 +41,29 @@ namespace leetcode
 
             // If no solution is found, return an empty array or throw an exception as needed
             return new int[0]; // No solution found
+        }
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            // Check to see if Dispose has already been called.
+            if (!this.disposed)
+            {
+                // If disposing equals true, dispose all managed
+                // and unmanaged resources.
+                //if (disposing)
+                //{
+                //    // Dispose managed resources.
+                  
+                //}
+
+
+                // Note disposing has been done.
+                disposed = true;
+            }
         }
     }
 }

@@ -18,3 +18,6 @@ else
 {
     Console.WriteLine("No solution found.");
 }
+PalindromeSolution palindrome =new PalindromeSolution();
+Console.WriteLine(palindrome.IsPalindrome(121));
+palindrome.Dispose();

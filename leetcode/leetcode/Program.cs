@@ -21,3 +21,7 @@ else
 PalindromeSolution palindrome =new PalindromeSolution();
 Console.WriteLine(palindrome.IsPalindrome(121));
 palindrome.Dispose();
+RomanToIntegerSolution romanToInteger= new RomanToIntegerSolution();
+var res=romanToInteger.RomanToInt("MCMXCIV");
+romanToInteger.Dispose();
+Console.WriteLine(res);

@@ -44,5 +44,8 @@ Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val
 RemoveDuplicatesFromSortedArray removeDuplicates=new RemoveDuplicatesFromSortedArray();
 int [] nums1 = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 Console.WriteLine( removeDuplicates.RemoveDuplicates(nums1));
-
-
+RemoveElement remove = new RemoveElement();
+int[] nums2 = { 3, 2, 2, 3 }; int val = 3;
+var res1= remove.RemoveElementFunction(nums2,val);
+remove.Dispose();
+Console.WriteLine(res1);

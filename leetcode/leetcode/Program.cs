@@ -41,4 +41,8 @@ ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4, null)));
 MergeTwoListsSolution listsSolution= new MergeTwoListsSolution();
 var margeNew=listsSolution.MergeTwoLists(list1,list2);
 Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val}=>{margeNew.next.next.next.val}=>{margeNew.next.next.next.next.val}=>{margeNew.next.next.next.next.next.val}");
-
+RemoveElement remove = new RemoveElement();
+int[] nums2 = { 3, 2, 2, 3 }; int val = 3;
+var res1= remove.RemoveElementFunction(nums2,val);
+remove.Dispose();
+Console.WriteLine(res1);

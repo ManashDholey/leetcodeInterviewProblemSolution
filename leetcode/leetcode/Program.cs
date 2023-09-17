@@ -19,6 +19,7 @@ else
 {
     Console.WriteLine("No solution found.");
 }
+
 PalindromeSolution palindrome =new PalindromeSolution();
 Console.WriteLine(palindrome.IsPalindrome(121));
 palindrome.Dispose();
@@ -32,8 +33,12 @@ string[] strs = { "flower", "flow", "flight" ,"flkf"};
 var rs=longestCommonPrefix.LongestCommonPrefix(strs);
 longestCommonPrefix.Dispose();
 Console.WriteLine(rs);
+ValidParenthesesSolution valid=new ValidParenthesesSolution();
+var r = valid.IsValid("(]");
+Console.WriteLine(r);
 ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(4, null)));
 ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4, null)));
 MergeTwoListsSolution listsSolution= new MergeTwoListsSolution();
 var margeNew=listsSolution.MergeTwoLists(list1,list2);
 Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val}=>{margeNew.next.next.next.val}=>{margeNew.next.next.next.next.val}=>{margeNew.next.next.next.next.next.val}");
+

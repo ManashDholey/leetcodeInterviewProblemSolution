@@ -18,6 +18,7 @@ else
 {
     Console.WriteLine("No solution found.");
 }
+
 PalindromeSolution palindrome =new PalindromeSolution();
 Console.WriteLine(palindrome.IsPalindrome(121));
 palindrome.Dispose();
@@ -31,3 +32,6 @@ string[] strs = { "flower", "flow", "flight" ,"flkf"};
 var rs=longestCommonPrefix.LongestCommonPrefix(strs);
 longestCommonPrefix.Dispose();
 Console.WriteLine(rs);
+ValidParenthesesSolution valid=new ValidParenthesesSolution();
+var r = valid.IsValid("(]");
+Console.WriteLine(r);

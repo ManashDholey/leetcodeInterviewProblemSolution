@@ -17,3 +17,7 @@ else
 {
     Console.WriteLine("No solution found.");
 }
+
+ValidParenthesesSolution valid=new ValidParenthesesSolution();
+var r = valid.IsValid("(]");
+Console.WriteLine(r);

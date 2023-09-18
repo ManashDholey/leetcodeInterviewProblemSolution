@@ -40,7 +40,9 @@ ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(4, null)));
 ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4, null)));
 MergeTwoListsSolution listsSolution= new MergeTwoListsSolution();
 var margeNew=listsSolution.MergeTwoLists(list1,list2);
+listsSolution.Dispose();
 Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val}=>{margeNew.next.next.next.val}=>{margeNew.next.next.next.next.val}=>{margeNew.next.next.next.next.next.val}");
+
 RemoveDuplicatesFromSortedArray removeDuplicates=new RemoveDuplicatesFromSortedArray();
 int [] nums1 = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 Console.WriteLine( removeDuplicates.RemoveDuplicates(nums1));
@@ -49,3 +51,8 @@ int[] nums2 = { 3, 2, 2, 3 }; int val = 3;
 var res1= remove.RemoveElementFunction(nums2,val);
 remove.Dispose();
 Console.WriteLine(res1);
+FirstOccurrenceInAString firstOccurrenceIn=new FirstOccurrenceInAString();
+string haystack = "dsadbutsad", needle = "sad";
+//string haystack = "leetcode", needle = "leeto";
+Console.WriteLine(firstOccurrenceIn.StrStr(haystack, needle));
+firstOccurrenceIn.Dispose();

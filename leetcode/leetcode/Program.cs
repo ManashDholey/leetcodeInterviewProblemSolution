@@ -40,5 +40,10 @@ ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(4, null)));
 ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4, null)));
 MergeTwoListsSolution listsSolution= new MergeTwoListsSolution();
 var margeNew=listsSolution.MergeTwoLists(list1,list2);
+listsSolution.Dispose();
 Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val}=>{margeNew.next.next.next.val}=>{margeNew.next.next.next.next.val}=>{margeNew.next.next.next.next.next.val}");
-
+FirstOccurrenceInAString firstOccurrenceIn=new FirstOccurrenceInAString();
+string haystack = "dsadbutsad", needle = "sad";
+//string haystack = "leetcode", needle = "leeto";
+Console.WriteLine(firstOccurrenceIn.StrStr(haystack, needle));
+firstOccurrenceIn.Dispose();

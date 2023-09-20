@@ -45,11 +45,11 @@ Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val
 
 
 RemoveDuplicatesFromSortedArray removeDuplicates=new RemoveDuplicatesFromSortedArray();
-int [] nums1 = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
-Console.WriteLine( removeDuplicates.RemoveDuplicates(nums1));
+int [] numsRemove = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
+Console.WriteLine( removeDuplicates.RemoveDuplicates(numsRemove));
 RemoveElement remove = new RemoveElement();
-int[] nums2 = { 3, 2, 2, 3 }; int val = 3;
-var res1= remove.RemoveElementFunction(nums2,val);
+int[] numsRemoveElement = { 3, 2, 2, 3 }; int val = 3;
+var res1= remove.RemoveElementFunction(numsRemoveElement, val);
 remove.Dispose();
 Console.WriteLine(res1);
 FirstOccurrenceInAString firstOccurrenceIn=new FirstOccurrenceInAString();
@@ -58,15 +58,20 @@ string haystack = "dsadbutsad", needle = "sad";
 Console.WriteLine(firstOccurrenceIn.StrStr(haystack, needle));
 firstOccurrenceIn.Dispose();
 InsertPosition insert=new InsertPosition();
-int[] nums3 = { 1, 3, 5, 6 }; int target1 = 7;
-var d=insert.SearchInsert(nums3, target1);
+
+int[] numsInsert = { 1, 3, 5, 6 }; int target1 = 7;
+var d=insert.SearchInsert(numsInsert, target1);
 Console.WriteLine(d);
 insert.Dispose();
 LengthOfLastWord lengthOfLast = new LengthOfLastWord();
 Console.WriteLine(lengthOfLast.LengthOfLastWordFun("luffy is still joyboy"));
 lengthOfLast.Dispose();
+
 PlusOne plus = new PlusOne();
 int[] digits = { 9 };
 digits = plus.PlusOneFun(digits);
 Console.WriteLine(string.Join(",",digits));
 plus.Dispose();
+MySqrtSolution mySqrt =new MySqrtSolution();
+Console.WriteLine(mySqrt.MySqrt(8));
+mySqrt.Dispose();

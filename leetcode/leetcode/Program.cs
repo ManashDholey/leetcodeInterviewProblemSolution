@@ -58,6 +58,7 @@ string haystack = "dsadbutsad", needle = "sad";
 Console.WriteLine(firstOccurrenceIn.StrStr(haystack, needle));
 firstOccurrenceIn.Dispose();
 InsertPosition insert=new InsertPosition();
+
 int[] numsInsert = { 1, 3, 5, 6 }; int target1 = 7;
 var d=insert.SearchInsert(numsInsert, target1);
 Console.WriteLine(d);
@@ -65,6 +66,12 @@ insert.Dispose();
 LengthOfLastWord lengthOfLast = new LengthOfLastWord();
 Console.WriteLine(lengthOfLast.LengthOfLastWordFun("luffy is still joyboy"));
 lengthOfLast.Dispose();
+
+PlusOne plus = new PlusOne();
+int[] digits = { 9 };
+digits = plus.PlusOneFun(digits);
+Console.WriteLine(string.Join(",",digits));
+plus.Dispose();
 MySqrtSolution mySqrt =new MySqrtSolution();
 Console.WriteLine(mySqrt.MySqrt(8));
 mySqrt.Dispose();

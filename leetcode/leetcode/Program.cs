@@ -43,6 +43,7 @@ var margeNew=listsSolution.MergeTwoLists(list1,list2);
 listsSolution.Dispose();
 Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val}=>{margeNew.next.next.next.val}=>{margeNew.next.next.next.next.val}=>{margeNew.next.next.next.next.next.val}");
 
+
 RemoveDuplicatesFromSortedArray removeDuplicates=new RemoveDuplicatesFromSortedArray();
 int [] nums1 = { 0, 0, 1, 1, 1, 2, 2, 3, 3, 4 };
 Console.WriteLine( removeDuplicates.RemoveDuplicates(nums1));
@@ -61,3 +62,6 @@ int[] nums2 = { 1, 3, 5, 6 }; int target1 = 7;
 var d=insert.SearchInsert(nums2, target1);
 Console.WriteLine(d);
 insert.Dispose();
+LengthOfLastWord lengthOfLast = new LengthOfLastWord();
+Console.WriteLine(lengthOfLast.LengthOfLastWordFun("luffy is still joyboy"));
+lengthOfLast.Dispose();

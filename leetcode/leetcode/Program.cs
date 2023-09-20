@@ -56,3 +56,8 @@ string haystack = "dsadbutsad", needle = "sad";
 //string haystack = "leetcode", needle = "leeto";
 Console.WriteLine(firstOccurrenceIn.StrStr(haystack, needle));
 firstOccurrenceIn.Dispose();
+InsertPosition insert=new InsertPosition();
+int[] nums2 = { 1, 3, 5, 6 }; int target1 = 7;
+var d=insert.SearchInsert(nums2, target1);
+Console.WriteLine(d);
+insert.Dispose();

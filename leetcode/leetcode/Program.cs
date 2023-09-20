@@ -41,4 +41,5 @@ ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4, null)));
 MergeTwoListsSolution listsSolution= new MergeTwoListsSolution();
 var margeNew=listsSolution.MergeTwoLists(list1,list2);
 Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val}=>{margeNew.next.next.next.val}=>{margeNew.next.next.next.next.val}=>{margeNew.next.next.next.next.next.val}");
-
+LengthOfLastWord lengthOfLast = new LengthOfLastWord();
+Console.WriteLine(lengthOfLast.LengthOfLastWordFun("luffy is still joyboy"));

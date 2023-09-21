@@ -41,6 +41,9 @@ ListNode list2 = new ListNode(1, new ListNode(3, new ListNode(4, null)));
 MergeTwoListsSolution listsSolution= new MergeTwoListsSolution();
 var margeNew=listsSolution.MergeTwoLists(list1,list2);
 listsSolution.Dispose();
+RemoveDuplicatesFromSortedList fromSortedList=new RemoveDuplicatesFromSortedList();
+fromSortedList.DeleteDuplicates(list1);
+fromSortedList.Dispose();
 Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val}=>{margeNew.next.next.next.val}=>{margeNew.next.next.next.next.val}=>{margeNew.next.next.next.next.next.val}");
 
 

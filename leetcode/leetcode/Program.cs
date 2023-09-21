@@ -60,6 +60,9 @@ firstOccurrenceIn.Dispose();
 InsertPosition insert=new InsertPosition();
 
 int[] numsInsert = { 1, 3, 5, 6 }; int target1 = 7;
+numsInsert.Sum();
+List<int> numberList = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+var r1 = insert.introTutorial(3, numberList);
 var d=insert.SearchInsert(numsInsert, target1);
 Console.WriteLine(d);
 insert.Dispose();

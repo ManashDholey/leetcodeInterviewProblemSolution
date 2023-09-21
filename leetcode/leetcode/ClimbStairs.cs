@@ -6,33 +6,34 @@ using System.Threading.Tasks;
 
 namespace leetcode
 {
-    public class InsertPosition : IDisposable
+    public class ClimbStairs : IDisposable
     {
         private bool disposed = false;
-        public  int introTutorial(int V, List<int> arr)
+
+        public int ClimbStairsFun(int n)
         {
-            int left = 0, right = arr.Count - 1, mid;
-            while (left <= right)
+            if (n == 1)
             {
-                mid = (right + left) / 2;
-                if (arr[mid] < V) left = mid + 1;
-                else if (arr[mid] > V) right = mid - 1;
-                else return mid;
+                return 1;
             }
-            return left;
-        }
-        public int SearchInsert(int[] nums, int target)
-        {
-            int left = 0, right = nums.Length - 1, mid;
-            while (left <= right)
+            if (n == 2)
             {
-                mid = (right + left) / 2;
-                if (nums[mid] < target) left = mid + 1;
-                else if (nums[mid] > target) right = mid - 1;
-                else return mid;
+                return 2;
             }
-            return left;
+            int a = 1, b = 2, c = 0;
+            for (int i = 2; i < n; i++)
+            {
+                c = a + b;
+                a = b;
+                b = c;
+            }
+            return c;
         }
+
+
+
+
+
 
         public void Dispose()
         {
@@ -51,6 +52,8 @@ namespace leetcode
                 //    // Dispose managed resources.
 
                 //}
+
+
                 // Note disposing has been done.
                 disposed = true;
             }

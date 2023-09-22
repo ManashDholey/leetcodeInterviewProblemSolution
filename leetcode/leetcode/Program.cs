@@ -44,7 +44,7 @@ listsSolution.Dispose();
 RemoveDuplicatesFromSortedList fromSortedList=new RemoveDuplicatesFromSortedList();
 fromSortedList.DeleteDuplicates(list1);
 fromSortedList.Dispose();
-Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val}=>{margeNew.next.next.next.val}=>{margeNew.next.next.next.next.val}=>{margeNew.next.next.next.next.next.val}");
+//Console.WriteLine($"{margeNew.val}=>{margeNew.next.val}=>{margeNew.next.next.val}=>{margeNew.next.next.next.val}=>{margeNew.next.next.next.next.val}=>{margeNew.next.next.next.next.next.val}");
 
 
 RemoveDuplicatesFromSortedArray removeDuplicates=new RemoveDuplicatesFromSortedArray();
@@ -81,3 +81,8 @@ plus.Dispose();
 MySqrtSolution mySqrt =new MySqrtSolution();
 Console.WriteLine(mySqrt.MySqrt(8));
 mySqrt.Dispose();
+InsertionSort sort = new InsertionSort();
+int n = 5;
+List<int> arr = new List<int> { 1, 2, 4, 5, 3 };
+sort.insertionSort1(n, arr);
+sort.Dispose();

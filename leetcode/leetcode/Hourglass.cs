@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,40 @@ namespace leetcode
 
             return maxSum;
         }
+        public static List<int> matchingStrings(List<string> stringList, List<string> queries)
+        {
+            Dictionary<string, int> stringCountMap = new Dictionary<string, int>();
 
+            // Count the occurrences of each string in the strings array
+            foreach (string str in stringList)
+            {
+                if (stringCountMap.ContainsKey(str))
+                {
+                    stringCountMap[str]++;
+                }
+                else
+                {
+                    stringCountMap[str] = 1;
+                }
+            }
+
+            List<int> results = new List<int>();
+
+            // For each query, look up its count in the map
+            for (int i = 0; i < queries.Count; i++)
+            {
+                if (stringCountMap.ContainsKey(queries[i]))
+                {
+                    results.Add(stringCountMap[queries[i]]);
+                }
+                else
+                {
+                    results.Add(0);
+                }
+            }
+
+            return results;
+        }
         public void Dispose()
         {
             Dispose(disposing: true);
@@ -53,3 +87,5 @@ namespace leetcode
         }
     }
 }
+   
+

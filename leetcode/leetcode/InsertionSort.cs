@@ -36,7 +36,31 @@ namespace leetcode
                 }
             }
         }
+        public  void InsertionSort2(int n, List<int> arr)
+        {
+            for (int index = 1; index < n; index++)
+            {
+                int insertValue = arr[index];
+                for (int subIndex = index - 1; subIndex >= -1; subIndex--)
+                {
+                    if (subIndex >= 0 && arr[subIndex] > insertValue)
+                    {
+                        arr[subIndex + 1] = arr[subIndex];
+                    }
+                    else
+                    {
+                        arr[subIndex + 1] = insertValue;
+                        break;
+                    }
+                }
+                Print(arr);
+            }
+        }
 
+        private static void Print(List<int> list)
+        {
+            Console.WriteLine(string.Join(" ", list.Select(x => x.ToString())));
+        }
         public void Dispose()
         {
             Dispose(disposing: true);

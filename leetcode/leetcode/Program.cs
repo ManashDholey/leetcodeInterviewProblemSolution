@@ -85,4 +85,5 @@ InsertionSort sort = new InsertionSort();
 int n = 5;
 List<int> arr = new List<int> { 1, 2, 4, 5, 3 };
 sort.insertionSort1(n, arr);
+sort.InsertionSort2(n, arr);
 sort.Dispose();

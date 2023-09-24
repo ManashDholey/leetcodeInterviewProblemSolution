@@ -87,3 +87,6 @@ List<int> arr = new List<int> { 1, 2, 4, 5, 3 };
 sort.insertionSort1(n, arr);
 sort.InsertionSort2(n, arr);
 sort.Dispose();
+List<int> candles = new List<int>() { 3, 2, 1, 3 };
+BirthdayCakeCandles birthdayCake=new BirthdayCakeCandles();
+Console.WriteLine(birthdayCake.birthdayCakeCandles(candles));

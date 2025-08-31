@@ -98,3 +98,7 @@ Console.WriteLine(birthdayCake.birthdayCakeCandles(candles));
 LongestSubstring longestSubstring=new LongestSubstring();
 Console.WriteLine(longestSubstring.LengthOfLongestSubstring("abcabcbb"));
 longestSubstring.Dispose();
+LongestPalindromicSubstring palindromicSubstring=new LongestPalindromicSubstring();
+Console.WriteLine(palindromicSubstring.LongestPalindrome("babad"));
+Console.WriteLine(palindromicSubstring.LongestPalindrome("cbbd"));
+palindromicSubstring.Dispose();

@@ -95,3 +95,6 @@ sort.Dispose();
 List<int> candles = new List<int>() { 3, 2, 1, 3 };
 BirthdayCakeCandles birthdayCake=new BirthdayCakeCandles();
 Console.WriteLine(birthdayCake.birthdayCakeCandles(candles));
+LongestSubstring longestSubstring=new LongestSubstring();
+Console.WriteLine(longestSubstring.LengthOfLongestSubstring("abcabcbb"));
+longestSubstring.Dispose();

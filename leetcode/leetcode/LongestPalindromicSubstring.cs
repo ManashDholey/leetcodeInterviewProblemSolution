@@ -92,7 +92,46 @@ namespace leetcode
 
             return LPS;
         }
+        public string LongestPalindromeTransform(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+                return "";
 
+            // Transform string: add separators and sentinels
+            string transformed = "^#" + string.Join("#", s.ToCharArray()) + "#$";
+            int n = transformed.Length;
+
+            int[] p = new int[n];  // Array to hold palindrome radii
+            int center = 0, rightBoundary = 0;
+
+            for (int i = 1; i < n - 1; i++)
+            {
+                int mirror = 2 * center - i;
+
+                // Initialize radius within right boundary
+                if (i < rightBoundary)
+                    p[i] = Math.Min(rightBoundary - i, p[mirror]);
+
+                // Expand palindrome centered at i
+                while (transformed[i + 1 + p[i]] == transformed[i - 1 - p[i]])
+                    p[i]++;
+
+                // Update center and rightBoundary if expanded beyond current boundary
+                if (i + p[i] > rightBoundary)
+                {
+                    center = i;
+                    rightBoundary = i + p[i];
+                }
+            }
+
+            // Find maximum length and center index
+            int maxLength = p.Max();
+            int centerIndex = Array.IndexOf(p, maxLength);
+
+            // Extract palindrome from original string
+            int start = (centerIndex - maxLength) / 2;  // mapping back to original string
+            return s.Substring(start, maxLength);
+        }
 
 
         protected virtual void Dispose(bool disposing)

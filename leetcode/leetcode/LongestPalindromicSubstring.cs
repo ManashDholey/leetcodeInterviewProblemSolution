@@ -42,7 +42,56 @@ namespace leetcode
             return right - left - 1;
         }
 
+        public string MediumLongestPalindrome(string str)
+        {
+            if (str.Length <= 1)
+                return str;
 
+            string LPS = "";
+
+            for (int i = 1; i < str.Length; i++)
+            {
+                // Consider odd length palindrome
+                int low = i;
+                int high = i;
+
+                while (low >= 0 && high < str.Length && str[low] == str[high])
+                {
+                    low--;
+                    high++;
+
+                    if (low == -1 || high == str.Length)
+                        break;
+                }
+
+                string palindrome = str.Substring(low + 1, high - (low + 1));
+                if (palindrome.Length > LPS.Length)
+                {
+                    LPS = palindrome;
+                }
+
+                // Consider even length palindrome
+                low = i - 1;
+                high = i;
+
+                while (low >= 0 && high < str.Length && str[low] == str[high])
+                {
+                    low--;
+                    high++;
+
+                    if (low == -1 || high == str.Length)
+                        break;
+                }
+
+                palindrome = str.Substring(low + 1, high - (low + 1));
+                if (palindrome.Length > LPS.Length)
+                {
+                    LPS = palindrome;
+                }
+            }
+
+            return LPS;
+        }
 
 
 

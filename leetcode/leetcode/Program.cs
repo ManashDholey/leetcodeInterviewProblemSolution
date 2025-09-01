@@ -102,3 +102,8 @@ LongestPalindromicSubstring palindromicSubstring=new LongestPalindromicSubstring
 Console.WriteLine(palindromicSubstring.LongestPalindrome("babad"));
 Console.WriteLine(palindromicSubstring.LongestPalindrome("cbbd"));
 palindromicSubstring.Dispose();
+MergeSortedArray mergeSortedArray = new MergeSortedArray();
+int[] nums1 = { 1, 2, 3, 0, 0, 0 }; int m1 = 3;
+int[] nums2 = { 2, 5, 6 }; int n1 = 3;
+mergeSortedArray.Merge(nums1, m1, nums2, n1);
+mergeSortedArray.Dispose();

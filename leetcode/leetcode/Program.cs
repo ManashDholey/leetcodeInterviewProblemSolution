@@ -107,3 +107,8 @@ int[] nums1 = { 1, 2, 3, 0, 0, 0 }; int m1 = 3;
 int[] nums2 = { 2, 5, 6 }; int n1 = 3;
 mergeSortedArray.Merge(nums1, m1, nums2, n1);
 mergeSortedArray.Dispose();
+BinaryTreeInorderTraversal binaryTreeInorderTraversal=new BinaryTreeInorderTraversal();
+TreeNode root = new TreeNode(1, null, new TreeNode(2, new TreeNode(3), null));
+var inorder=binaryTreeInorderTraversal.InorderTraversal(root);
+binaryTreeInorderTraversal.Dispose();
+Console.WriteLine(string.Join(",",inorder));

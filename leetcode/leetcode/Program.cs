@@ -120,3 +120,7 @@ TreeNode p = new TreeNode(1, new TreeNode(2), new TreeNode(3));
 TreeNode q = new TreeNode(1, new TreeNode(2), new TreeNode(3));
 Console.WriteLine(sameTree.IsSameTree(p, q));
 sameTree.Dispose();
+SymmetricTree symmetricTree=new SymmetricTree();
+TreeNode root1 = new TreeNode(1, new TreeNode(2, new TreeNode(3), new TreeNode(4)), new TreeNode(2, new TreeNode(4), new TreeNode(3)));
+Console.WriteLine(symmetricTree.IsSymmetric(root1));
+symmetricTree.Dispose();

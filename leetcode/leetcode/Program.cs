@@ -112,3 +112,5 @@ TreeNode root = new TreeNode(1, null, new TreeNode(2, new TreeNode(3), null));
 var inorder=binaryTreeInorderTraversal.InorderTraversal(root);
 binaryTreeInorderTraversal.Dispose();
 Console.WriteLine(string.Join(",",inorder));
+AddBinary addBinary=new AddBinary();
+Console.WriteLine(addBinary.AddBinaryFunction("11", "1"));

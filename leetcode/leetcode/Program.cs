@@ -124,3 +124,6 @@ SymmetricTree symmetricTree=new SymmetricTree();
 TreeNode root1 = new TreeNode(1, new TreeNode(2, new TreeNode(3), new TreeNode(4)), new TreeNode(2, new TreeNode(4), new TreeNode(3)));
 Console.WriteLine(symmetricTree.IsSymmetric(root1));
 symmetricTree.Dispose();
+MaximumDepthOfBinaryTree maximumDepth=new MaximumDepthOfBinaryTree();
+Console.WriteLine(maximumDepth.MaxDepth(root1));
+maximumDepth.Dispose();

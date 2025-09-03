@@ -127,3 +127,8 @@ symmetricTree.Dispose();
 MaximumDepthOfBinaryTree maximumDepth=new MaximumDepthOfBinaryTree();
 Console.WriteLine(maximumDepth.MaxDepth(root1));
 maximumDepth.Dispose();
+ConvertSortedArrayToBinarySearchTree convertSorted=new ConvertSortedArrayToBinarySearchTree();
+int[] numsConvert = { -10, -3, 0, 5, 9 };
+var bst=convertSorted.SortedArrayToBST(numsConvert);
+convertSorted.PrintTree(bst);
+convertSorted.Dispose();

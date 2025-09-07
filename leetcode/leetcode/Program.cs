@@ -132,3 +132,6 @@ int[] numsConvert = { -10, -3, 0, 5, 9 };
 var bst=convertSorted.SortedArrayToBST(numsConvert);
 convertSorted.PrintTree(bst);
 convertSorted.Dispose();
+BalancedBinaryTree balancedBinary=new BalancedBinaryTree();
+Console.WriteLine(balancedBinary.IsBalanced(root1));
+balancedBinary.Dispose();

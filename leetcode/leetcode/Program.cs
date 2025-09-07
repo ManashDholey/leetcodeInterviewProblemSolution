@@ -135,3 +135,26 @@ convertSorted.Dispose();
 BalancedBinaryTree balancedBinary=new BalancedBinaryTree();
 Console.WriteLine(balancedBinary.IsBalanced(root1));
 balancedBinary.Dispose();
+MinimumDepthOfBinaryTree minimumDepthOfBinaryTree=new MinimumDepthOfBinaryTree();
+// Example 1
+TreeNode root2 = new TreeNode(3,
+    new TreeNode(9),
+    new TreeNode(20, new TreeNode(15), new TreeNode(7))
+);
+Console.WriteLine(minimumDepthOfBinaryTree.MinDepth(root2)); // Output: 2
+
+// Example 2
+TreeNode root3 = new TreeNode(2,
+    null,
+    new TreeNode(3,
+        null,
+        new TreeNode(4,
+            null,
+            new TreeNode(5,
+                null,
+                new TreeNode(6)
+            )
+        )
+    )
+);
+Console.WriteLine(minimumDepthOfBinaryTree.MinDepth(root3)); // Output: 5

@@ -158,3 +158,15 @@ TreeNode root3 = new TreeNode(2,
     )
 );
 Console.WriteLine(minimumDepthOfBinaryTree.MinDepth(root3)); // Output: 5
+
+MaximumDepthOfN_aryTree maximumDepthOfN = new MaximumDepthOfN_aryTree();
+Node root4 = new Node(1, new List<Node> {
+            new Node(3, new List<Node> {
+                new Node(5),
+                new Node(6)
+            }),
+            new Node(2),
+            new Node(4)
+        });
+maximumDepthOfN.MaxDepth(root4);
+

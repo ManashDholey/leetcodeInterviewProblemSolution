@@ -169,4 +169,5 @@ Node root4 = new Node(1, new List<Node> {
             new Node(4)
         });
 maximumDepthOfN.MaxDepth(root4);
+maximumDepthOfN.Dispose();
 

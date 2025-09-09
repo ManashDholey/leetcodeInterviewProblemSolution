@@ -186,3 +186,4 @@ TreeNode root5 = new TreeNode(5,
 );
 PathSum pathSum=new PathSum();
 Console.WriteLine(pathSum.HasPathSum(root5, 22));
+pathSum.Dispose();

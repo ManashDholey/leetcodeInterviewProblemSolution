@@ -189,4 +189,5 @@ Console.WriteLine(pathSum.HasPathSum(root5, 22));
 pathSum.Dispose();
 PascalSTriangle pascalSTriangle= new PascalSTriangle();
 pascalSTriangle.PrintPascalsTriangle(pascalSTriangle.Generate(6));
+pascalSTriangle.GetRow(3);
 pascalSTriangle.Dispose();

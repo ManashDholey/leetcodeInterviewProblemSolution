@@ -48,6 +48,25 @@ namespace leetcode
                 Console.WriteLine();
             }
         }
+        public IList<int> GetRow(int rowIndex)
+        {
+            List<int> res = new List<int> { 1 };
+
+            for (int i = 0; i < rowIndex; i++)
+            {
+                List<int> next = new List<int> { 1 };
+
+                for (int j = 0; j < res.Count - 1; j++)
+                {
+                    next.Add(res[j] + res[j + 1]);
+                }
+
+                next.Add(1);
+                res = next;
+            }
+
+            return res;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -143,10 +143,16 @@ CREATE TABLE Salary (
     sex ENUM('m', 'f'),
     salary INT
 );
-
+GO
 -- Insert sample data
 INSERT INTO Salary (id, name, sex, salary) VALUES
 (1, 'John', 'm', 5000),
 (2, 'Alice', 'f', 6000),
 (3, 'Bob', 'm', 5500),
 (4, 'Carol', 'f', 7000);
+GO
+UPDATE Salary
+SET sex = CASE 
+            WHEN sex = 'm' THEN 'f'
+            WHEN sex = 'f' THEN 'm'
+          END;

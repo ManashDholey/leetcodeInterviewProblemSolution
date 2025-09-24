@@ -137,3 +137,16 @@ INSERT INTO Seat (id, student) VALUES
 (4, 'Green'),
 (5, 'Jeames');
 GO
+CREATE TABLE Salary (
+    id INT PRIMARY KEY,
+    name VARCHAR(255),
+    sex ENUM('m', 'f'),
+    salary INT
+);
+
+-- Insert sample data
+INSERT INTO Salary (id, name, sex, salary) VALUES
+(1, 'John', 'm', 5000),
+(2, 'Alice', 'f', 6000),
+(3, 'Bob', 'm', 5500),
+(4, 'Carol', 'f', 7000);

@@ -2,7 +2,7 @@
 
 namespace leetcode
 {
-    public  class MaximumOddBinaryNumber
+    public  class MaximumOddBinaryNumber : DisposableBase
     {
      public string RearrangeToMaxOdd(string s)
         {
@@ -43,6 +43,18 @@ namespace leetcode
             arr[leftmostOneIndex] = '0';
 
             return string.Join("", arr); ;
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                // Dispose managed resources
+
+            }
+            // No unmanaged resources, so nothing extra here
+
+            // Call base to set _disposed flag
+            base.Dispose(disposing);
         }
     }
 }

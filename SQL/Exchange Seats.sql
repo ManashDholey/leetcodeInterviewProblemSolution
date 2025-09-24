@@ -156,3 +156,87 @@ SET sex = CASE
             WHEN sex = 'm' THEN 'f'
             WHEN sex = 'f' THEN 'm'
           END;
+
+		  GO 
+  CREATE TABLE RequestLog (
+    Id INT IDENTITY PRIMARY KEY,
+    IpAddress VARCHAR(50),
+    Url NVARCHAR(255),
+    RequestTime DATETIME2
+);
+GO 
+INSERT INTO dbo.RequestLog (IpAddress, Url, RequestTime)
+VALUES
+-- IP 1
+('192.168.1.1', '/home', '2025-09-24 10:00:05'),
+('192.168.1.1', '/home', '2025-09-24 10:00:15'),
+('192.168.1.1', '/home', '2025-09-24 10:00:55'),
+('192.168.1.1', '/home', '2025-09-24 10:01:20'),
+('192.168.1.1', '/about', '2025-09-24 10:01:25'),
+
+-- IP 2
+('192.168.1.2', '/home', '2025-09-24 10:00:10'),
+('192.168.1.2', '/contact', '2025-09-24 10:00:35'),
+('192.168.1.2', '/home', '2025-09-24 10:01:05'),
+('192.168.1.2', '/contact', '2025-09-24 10:01:50'),
+
+-- IP 3
+('192.168.1.3', '/home', '2025-09-24 10:00:25'),
+('192.168.1.3', '/about', '2025-09-24 10:00:45'),
+('192.168.1.3', '/home', '2025-09-24 10:01:10'),
+('192.168.1.3', '/about', '2025-09-24 10:01:40'),
+
+-- IP 4
+('192.168.1.4', '/services', '2025-09-24 10:00:05'),
+('192.168.1.4', '/services', '2025-09-24 10:00:50'),
+('192.168.1.4', '/home', '2025-09-24 10:01:15'),
+('192.168.1.4', '/home', '2025-09-24 10:01:45'),
+
+-- IP 5
+('192.168.1.5', '/contact', '2025-09-24 10:00:30'),
+('192.168.1.5', '/contact', '2025-09-24 10:00:55'),
+('192.168.1.5', '/about', '2025-09-24 10:01:05'),
+('192.168.1.5', '/about', '2025-09-24 10:01:50');
+
+GO
+SELECT 
+    IpAddress,
+    Url,
+    WindowStart,
+    COUNT(*) OVER (PARTITION BY IpAddress, Url, WindowStart) AS RequestCount
+FROM (
+    SELECT *,
+        -- Bucket each request into a 60-second window
+        DATEADD(SECOND, (DATEDIFF(SECOND, '1970-01-01', RequestTime) / 60) * 60, '1970-01-01') AS WindowStart
+    FROM dbo.RequestLog
+) AS t
+ORDER BY IpAddress, Url, WindowStart;
+GO
+
+DECLARE @i INT = 1;
+DECLARE @ipBase VARCHAR(20);
+DECLARE @urlList TABLE (Url VARCHAR(50));
+DECLARE @randomUrl VARCHAR(50);
+
+-- Insert sample URLs
+INSERT INTO @urlList (Url)
+VALUES ('/home'), ('/about'), ('/contact'), ('/services'), ('/products');
+
+WHILE @i <= 120  -- 120 unique requests
+BEGIN
+    -- Random IP between 192.168.1.1 to 192.168.1.10
+    SET @ipBase = CONCAT('192.168.1.', CAST(1 + CAST(RAND() * 10 AS INT) AS VARCHAR));
+
+    -- Random URL from list
+    SELECT TOP 1 @randomUrl = Url FROM @urlList ORDER BY NEWID();
+
+    -- Random timestamp between '2025-09-24 10:00:00' and '2025-09-24 10:05:59'
+    INSERT INTO dbo.RequestLog (IpAddress, Url, RequestTime)
+    VALUES (
+        @ipBase,
+        @randomUrl,
+        DATEADD(SECOND, CAST(RAND() * 360 AS INT), '2025-09-24 10:00:00')
+    );
+
+    SET @i = @i + 1;
+END

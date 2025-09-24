@@ -168,35 +168,35 @@ GO
 INSERT INTO dbo.RequestLog (IpAddress, Url, RequestTime)
 VALUES
 -- IP 1
-('192.168.1.1', '/home', '2025-09-24 10:00:05'),
-('192.168.1.1', '/home', '2025-09-24 10:00:15'),
-('192.168.1.1', '/home', '2025-09-24 10:00:55'),
-('192.168.1.1', '/home', '2025-09-24 10:01:20'),
-('192.168.1.1', '/about', '2025-09-24 10:01:25'),
+('192.168.1.1', '/home', GETDATE()),
+('192.168.1.1', '/home', GETDATE()),
+('192.168.1.1', '/home', GETDATE()),
+('192.168.1.1', '/home', GETDATE()),
+('192.168.1.1', '/about',GETDATE()),
 
 -- IP 2
-('192.168.1.2', '/home', '2025-09-24 10:00:10'),
-('192.168.1.2', '/contact', '2025-09-24 10:00:35'),
-('192.168.1.2', '/home', '2025-09-24 10:01:05'),
-('192.168.1.2', '/contact', '2025-09-24 10:01:50'),
+('192.168.1.2', '/home',    GETDATE()),
+('192.168.1.2', '/contact', GETDATE()),
+('192.168.1.2', '/home',    GETDATE()),
+('192.168.1.2', '/contact', GETDATE()),
 
 -- IP 3
-('192.168.1.3', '/home', '2025-09-24 10:00:25'),
-('192.168.1.3', '/about', '2025-09-24 10:00:45'),
-('192.168.1.3', '/home', '2025-09-24 10:01:10'),
-('192.168.1.3', '/about', '2025-09-24 10:01:40'),
+('192.168.1.3', '/home',   GETDATE()),
+('192.168.1.3', '/about',  GETDATE()),
+('192.168.1.3', '/home',   GETDATE()),
+('192.168.1.3', '/about',  GETDATE()),
 
 -- IP 4
-('192.168.1.4', '/services', '2025-09-24 10:00:05'),
-('192.168.1.4', '/services', '2025-09-24 10:00:50'),
-('192.168.1.4', '/home', '2025-09-24 10:01:15'),
-('192.168.1.4', '/home', '2025-09-24 10:01:45'),
+('192.168.1.4', '/services', GETDATE()),
+('192.168.1.4', '/services', GETDATE()),
+('192.168.1.4', '/home',     GETDATE()),
+('192.168.1.4', '/home',     GETDATE()),
 
 -- IP 5
-('192.168.1.5', '/contact', '2025-09-24 10:00:30'),
-('192.168.1.5', '/contact', '2025-09-24 10:00:55'),
-('192.168.1.5', '/about', '2025-09-24 10:01:05'),
-('192.168.1.5', '/about', '2025-09-24 10:01:50');
+('192.168.1.5', '/contact', GETDATE()),
+('192.168.1.5', '/contact', GETDATE()),
+('192.168.1.5', '/about',   GETDATE()),
+('192.168.1.5', '/about',   GETDATE());
 
 GO
 SELECT 
@@ -209,6 +209,7 @@ FROM (
         -- Bucket each request into a 60-second window
         DATEADD(SECOND, (DATEDIFF(SECOND, '1970-01-01', RequestTime) / 60) * 60, '1970-01-01') AS WindowStart
     FROM dbo.RequestLog
+	 WHERE RequestTime >= DATEADD(SECOND, -5, GETDATE()) 
 ) AS t
 ORDER BY IpAddress, Url, WindowStart;
 GO
@@ -235,7 +236,7 @@ BEGIN
     VALUES (
         @ipBase,
         @randomUrl,
-        DATEADD(SECOND, CAST(RAND() * 360 AS INT), '2025-09-24 10:00:00')
+        DATEADD(SECOND, CAST(RAND() * 360 AS INT), GETDATE())
     );
 
     SET @i = @i + 1;

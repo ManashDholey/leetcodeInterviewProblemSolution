@@ -199,26 +199,13 @@ VALUES
 ('192.168.1.5', '/about',   GETDATE());
 
 GO
-SELECT 
-    IpAddress,
-    Url,
-    WindowStart,
-    COUNT(*) OVER (PARTITION BY IpAddress, Url, WindowStart) AS RequestCount
-FROM (
-    SELECT *,
-        -- Bucket each request into a 60-second window
-        DATEADD(SECOND, (DATEDIFF(SECOND, '1970-01-01', RequestTime) / 60) * 60, '1970-01-01') AS WindowStart
-    FROM dbo.RequestLog
-	 WHERE RequestTime >= DATEADD(SECOND, -5, GETDATE()) 
-) AS t
-ORDER BY IpAddress, Url, WindowStart;
-GO
-
+-------
+GO-
 DECLARE @i INT = 1;
 DECLARE @ipBase VARCHAR(20);
 DECLARE @urlList TABLE (Url VARCHAR(50));
 DECLARE @randomUrl VARCHAR(50);
-
+--
 -- Insert sample URLs
 INSERT INTO @urlList (Url)
 VALUES ('/home'), ('/about'), ('/contact'), ('/services'), ('/products');

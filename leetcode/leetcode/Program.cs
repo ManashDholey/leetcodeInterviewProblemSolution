@@ -196,3 +196,7 @@ BitwiseORs bitwiseORs=new BitwiseORs();
 int[] numsBit = { 12, 9, 8, 6 };
 Console.WriteLine(bitwiseORs.EvenBitwiseOr(numsBit));
 bitwiseORs.Dispose();
+BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock=new BestTimeToBuyAndSellStock();
+int[] prices = { 7, 1, 5, 3, 6, 4 };
+Console.WriteLine(bestTimeToBuyAndSellStock.MaxProfit(prices));
+bestTimeToBuyAndSellStock.Dispose();

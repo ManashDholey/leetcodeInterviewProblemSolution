@@ -199,8 +199,7 @@ VALUES
 ('192.168.1.5', '/about',   GETDATE());
 
 GO
--------
-GO-
+
 DECLARE @i INT = 1;
 DECLARE @ipBase VARCHAR(20);
 DECLARE @urlList TABLE (Url VARCHAR(50));
@@ -228,3 +227,17 @@ BEGIN
 
     SET @i = @i + 1;
 END
+GO
+SELECT 
+    IpAddress,
+    Url,
+    WindowStart,
+    COUNT(*) OVER (PARTITION BY IpAddress, Url, WindowStart) AS RequestCount
+FROM (
+    SELECT *,
+        -- Bucket each request into a 60-second window
+        DATEADD(SECOND, (DATEDIFF(SECOND, '1970-01-01', RequestTime) / 60) * 60, '1970-01-01') AS WindowStart
+    FROM dbo.RequestLog
+    WHERE RequestTime >= DATEADD(MINUTE, -5, GETDATE())  -- last 5 minutes only
+) AS t
+ORDER BY IpAddress, Url, WindowStart;

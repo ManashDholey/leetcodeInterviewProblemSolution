@@ -188,11 +188,11 @@ TreeNode root5 = new TreeNode(5,
 PathSum pathSum=new PathSum();
 Console.WriteLine(pathSum.HasPathSum(root5, 22));
 pathSum.Dispose();
-PascalSTriangle pascalSTriangle= new PascalSTriangle();
+PascalSTriangle pascalSTriangle = new PascalSTriangle();
 pascalSTriangle.PrintPascalsTriangle(pascalSTriangle.Generate(6));
 pascalSTriangle.GetRow(3);
 pascalSTriangle.Dispose();
-BitwiseORs bitwiseORs=new BitwiseORs();
+BitwiseORs bitwiseORs = new BitwiseORs();
 int[] numsBit = { 12, 9, 8, 6 };
 Console.WriteLine(bitwiseORs.EvenBitwiseOr(numsBit));
 bitwiseORs.Dispose();

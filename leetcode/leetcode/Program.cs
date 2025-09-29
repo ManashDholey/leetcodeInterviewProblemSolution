@@ -200,3 +200,11 @@ BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock=new BestTimeToBuyAndSellStoc
 int[] prices = { 7, 1, 5, 3, 6, 4 };
 Console.WriteLine(bestTimeToBuyAndSellStock.MaxProfit(prices));
 bestTimeToBuyAndSellStock.Dispose();
+ComputeDecimalRepresentation computeDecimal=new ComputeDecimalRepresentation();
+int nCompute = 508;
+var decimalRep=computeDecimal.DecimalRepresentation(nCompute);
+Console.WriteLine(string.Join(",",decimalRep));
+int nCompute1 = 537;
+var decimalRep1 = computeDecimal.DecimalRepresentation(nCompute1);
+Console.WriteLine(string.Join(",", decimalRep1));
+computeDecimal.Dispose();

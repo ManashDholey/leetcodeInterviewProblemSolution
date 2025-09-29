@@ -1,4 +1,6 @@
-﻿IF OBJECT_ID('dbo.DailySales', 'U') IS NOT NULL
+﻿USE [InterviewDemo]
+GO
+IF OBJECT_ID('dbo.DailySales', 'U') IS NOT NULL
     DROP TABLE dbo.DailySales;
 
 -- 2️⃣ Create a sample DailySales table
@@ -241,3 +243,115 @@ FROM (
     WHERE RequestTime >= DATEADD(MINUTE, -5, GETDATE())  -- last 5 minutes only
 ) AS t
 ORDER BY IpAddress, Url, WindowStart;
+GO
+-- Group Sold Products By The Date
+IF OBJECT_ID('dbo.Activities', 'U') IS NOT NULL
+    DROP TABLE dbo.Activities;
+GO
+CREATE TABLE Activities (
+    sell_date DATE,
+    product   VARCHAR(50)
+);
+GO
+INSERT INTO Activities (sell_date, product) VALUES
+('2020-05-30', 'Headphone'),
+('2020-06-01', 'Pencil'),
+('2020-06-02', 'Mask'),
+('2020-05-30', 'Basketball'),
+('2020-06-01', 'Bible'),
+('2020-06-02', 'Mask'),
+('2020-05-30', 'T-Shirt'),
+('2020-05-30', 'Shirt'),
+('2020-05-30', 'Pen'),
+('2020-05-30', 'Bible'),
+('2020-05-30', 'Mobile');
+
+GO
+
+SELECT 
+    a.sell_date,
+    COUNT(DISTINCT a.product) AS num_sold,
+    STUFF((
+        SELECT ',' + p.product
+        FROM (
+            SELECT DISTINCT sell_date, product
+            FROM Activities
+        ) p
+        WHERE p.sell_date = a.sell_date
+        ORDER BY p.sell_date,p.product
+        FOR XML PATH('')
+    ), 1, 1, '') AS products
+FROM Activities a
+GROUP BY a.sell_date
+ORDER BY a.sell_date;
+-- Customer Who Visited but Did Not Make Any Transactions
+GO
+CREATE TABLE Visits (
+    visit_id INT PRIMARY KEY,
+    customer_id INT
+);
+GO
+CREATE TABLE Transactions (
+    transaction_id INT PRIMARY KEY,
+    visit_id INT,
+    amount INT
+);
+GO
+-- Insert data into Visits table
+INSERT INTO Visits (visit_id, customer_id) VALUES
+(1, 23),
+(2, 9),
+(4, 30),
+(5, 54),
+(6, 96),
+(7, 54),
+(8, 54);
+GO
+-- Insert data into Transactions table
+INSERT INTO Transactions (transaction_id, visit_id, amount) VALUES
+(2, 5, 310),
+(3, 5, 300),
+(9, 5, 200),
+(12, 1, 910),
+(13, 2, 970);
+
+
+SELECT v.customer_id, COUNT(customer_id) AS count_no_trans
+FROM Visits v 
+LEFT JOIN Transactions t ON v.visit_id = t.visit_id       
+WHERE t.transaction_id  IS NULL
+GROUP BY v.customer_id  
+GO
+--Bank Account Summary II
+CREATE TABLE Users (
+    account INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+GO
+CREATE TABLE TransactionsWithAcount (
+    trans_id INT PRIMARY KEY,
+    account INT,
+    amount INT,
+    transacted_on DATE
+);
+GO
+-- Insert data into Users table
+INSERT INTO Users (account, name) VALUES
+(900001, 'Alice'),
+(900002, 'Bob'),
+(900003, 'Charlie');
+GO
+-- Insert data into Transactions table
+INSERT INTO TransactionsWithAcount (trans_id, account, amount, transacted_on) VALUES
+(1, 900001, 7000, '2020-08-01'),
+(2, 900001, 7000, '2020-09-01'),
+(3, 900001, -3000, '2020-09-05'),
+(4, 900002, 1000, '2020-09-12'),
+(5, 900003, 6000, '2020-08-07'),
+(6, 900003, 6000, '2020-09-07'),
+(7, 900003, -4000, '2020-09-11');
+GO
+SELECT u.name,SUM(t.account) balance FROM users u INNER JOIN TransactionsWithAcount t on u.account = t.account
+GROUP BY  u.name
+Having SUM(t.amount) > 10000
+

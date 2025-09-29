@@ -351,7 +351,30 @@ INSERT INTO TransactionsWithAcount (trans_id, account, amount, transacted_on) VA
 (6, 900003, 6000, '2020-09-07'),
 (7, 900003, -4000, '2020-09-11');
 GO
-SELECT u.name,SUM(t.account) balance FROM users u INNER JOIN TransactionsWithAcount t on u.account = t.account
-GROUP BY  u.name
+SELECT u.name,SUM(t.amount) balance FROM Users u INNER JOIN TransactionsWithAcount t on u.account = t.account
+GROUP BY t.account,u.name
 Having SUM(t.amount) > 10000
-
+--Triangle Judgement
+GO
+CREATE TABLE Triangle (
+    x INT,
+    y INT,
+    z INT,
+    PRIMARY KEY (x, y, z)
+);
+GO
+INSERT INTO Triangle (x, y, z) VALUES
+(13, 15, 30),
+(10, 20, 15),
+(5, 7, 10),
+(8, 8, 15);
+GO
+SELECT 
+    x,
+    y,
+    z,
+    CASE 
+        WHEN x + y > z AND x + z > y AND y + z > x THEN 'Yes'
+        ELSE 'No'
+    END AS triangle
+FROM Triangle;

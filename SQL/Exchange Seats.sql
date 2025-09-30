@@ -570,3 +570,20 @@ SELECT
 FROM Department
 GROUP BY id
 ORDER BY id;
+GO
+CREATE TABLE Queries (
+    query_name VARCHAR(50),
+    result VARCHAR(50),
+    position INT,
+    rating INT
+);
+GO
+-- Insert sample data
+INSERT INTO Queries (query_name, result, position, rating) VALUES
+('Query1', 'ResultA', 1, 5),
+('Query1', 'ResultB', 2, 4),
+('Query1', 'ResultC', 3, 2),
+('Query2', 'ResultX', 1, 3),
+('Query2', 'ResultY', 2, 2),
+('Query2', 'ResultZ', 3, 1);
+GO

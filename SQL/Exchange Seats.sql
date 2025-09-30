@@ -462,4 +462,111 @@ INSERT INTO Project (project_id, employee_id) VALUES
 (2, 1),
 (2, 4);
 GO
+SELECT 
+    p.project_id,
+    ROUND(AVG(e.experience_years), 2) AS average_years
+FROM Project p
+JOIN Employee e 
+    ON p.employee_id = e.employee_id
+GROUP BY p.project_id;
+GO
 
+CREATE TABLE ProductWithUnitePrice (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(50),
+    unit_price INT
+);
+GO
+CREATE TABLE SalesOne (
+    seller_id INT,
+    product_id INT,
+    buyer_id INT,
+    sale_date DATE,
+    quantity INT,
+    price INT,
+    FOREIGN KEY (product_id) REFERENCES ProductWithUnitePrice(product_id)
+);
+GO
+-- Insert sample data into Product
+INSERT INTO ProductWithUnitePrice (product_id, product_name, unit_price) VALUES
+(1, 'S8', 1000),
+(2, 'G4', 800),
+(3, 'iPhone', 1400);
+GO
+-- Insert sample data into Sales
+INSERT INTO SalesOne (seller_id, product_id, buyer_id, sale_date, quantity, price) VALUES
+(1, 1, 1, '2019-01-21', 2, 2000),
+(1, 2, 2, '2019-02-17', 1, 800),
+(2, 2, 3, '2019-06-02', 1, 800),
+(3, 3, 4, '2019-05-13', 2, 2800);
+GO
+SELECT DISTINCT 
+    p.product_id,
+    p.product_name
+FROM ProductWithUnitePrice p
+JOIN SalesOne s 
+    ON p.product_id = s.product_id
+WHERE s.sale_date BETWEEN '2019-01-01' AND '2019-03-31'
+  AND NOT EXISTS (
+        SELECT 1 
+        FROM SalesOne s2
+        WHERE s2.product_id = p.product_id
+          AND (s2.sale_date NOT BETWEEN '2019-01-01' AND '2019-03-31')
+  );
+  GO
+  --Article Views I
+  CREATE TABLE Views (
+    article_id INT,
+    author_id INT,
+    viewer_id INT,
+    view_date DATE
+);
+GO
+-- Insert sample data
+INSERT INTO Views (article_id, author_id, viewer_id, view_date) VALUES
+(1, 3, 5, '2019-08-01'),
+(1, 3, 6, '2019-08-02'),
+(2, 7, 7, '2019-08-01'),
+(2, 7, 6, '2019-08-02'),
+(4, 7, 1, '2019-07-22'),
+(3, 4, 4, '2019-07-21'),
+(3, 4, 4, '2019-07-21');
+GO
+SELECT DISTINCT 
+    author_id AS id
+FROM Views
+WHERE author_id = viewer_id
+ORDER BY id;
+GO
+CREATE TABLE Department (
+    id INT,
+    revenue INT,
+    month VARCHAR(10),
+    PRIMARY KEY (id, month)
+);
+GO
+-- Insert sample data
+INSERT INTO Department (id, revenue, month) VALUES
+(1, 8000, 'Jan'),
+(2, 9000, 'Jan'),
+(3, 10000, 'Feb'),
+(1, 7000, 'Feb'),
+(1, 6000, 'Mar');
+GO
+SELECT 
+    id,
+    MAX(CASE WHEN month = 'Jan' THEN revenue END) AS Jan_Revenue,
+    MAX(CASE WHEN month = 'Feb' THEN revenue END) AS Feb_Revenue,
+    MAX(CASE WHEN month = 'Mar' THEN revenue END) AS Mar_Revenue,
+    MAX(CASE WHEN month = 'Apr' THEN revenue END) AS Apr_Revenue,
+    MAX(CASE WHEN month = 'May' THEN revenue END) AS May_Revenue,
+    MAX(CASE WHEN month = 'Jun' THEN revenue END) AS Jun_Revenue,
+    MAX(CASE WHEN month = 'Jul' THEN revenue END) AS Jul_Revenue,
+    MAX(CASE WHEN month = 'Aug' THEN revenue END) AS Aug_Revenue,
+    MAX(CASE WHEN month = 'Sep' THEN revenue END) AS Sep_Revenue,
+    MAX(CASE WHEN month = 'Oct' THEN revenue END) AS Oct_Revenue,
+    MAX(CASE WHEN month = 'Nov' THEN revenue END) AS Nov_Revenue,
+    MAX(CASE WHEN month = 'Dec' THEN revenue END) AS Dec_Revenue
+FROM Department
+GROUP BY id
+ORDER BY id;

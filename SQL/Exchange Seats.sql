@@ -433,5 +433,33 @@ SELECT
 FROM Sales s
 INNER JOIN Product p
 ON s.product_id = p.product_id;
-
+GO
+CREATE TABLE Employee (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    experience_years INT NOT NULL
+);
+GO
+CREATE TABLE Project (
+    project_id INT,
+    employee_id INT,
+    PRIMARY KEY (project_id, employee_id),
+    FOREIGN KEY (employee_id) REFERENCES Employee(employee_id)
+);
+GO
+-- Insert data into Employee table
+INSERT INTO Employee (employee_id, name, experience_years) VALUES
+(1, 'Khaled', 3),
+(2, 'Ali', 2),
+(3, 'John', 1),
+(4, 'Doe', 2);
+GO
+-- Insert data into Project table
+INSERT INTO Project (project_id, employee_id) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(2, 1),
+(2, 4);
+GO
 

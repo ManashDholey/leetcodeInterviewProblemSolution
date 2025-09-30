@@ -570,3 +570,29 @@ SELECT
 FROM Department
 GROUP BY id
 ORDER BY id;
+GO
+CREATE TABLE Queries (
+    query_name VARCHAR(50),
+    result VARCHAR(50),
+    position INT,
+    rating INT
+);
+GO
+-- Insert sample data
+INSERT INTO Queries (query_name, result, position, rating) VALUES
+('Query1', 'ResultA', 1, 5),
+('Query1', 'ResultB', 2, 4),
+('Query1', 'ResultC', 3, 2),
+('Query2', 'ResultX', 1, 3),
+('Query2', 'ResultY', 2, 2),
+('Query2', 'ResultZ', 3, 1);
+GO
+SELECT 
+    query_name,
+    ROUND(AVG(1.0 * rating / position), 2) AS quality,
+    ROUND(
+        100.0 * SUM(CASE WHEN rating < 3 THEN 1 ELSE 0 END) / COUNT(query_name)
+    , 2) AS poor_query_percentage
+FROM Queries
+GROUP BY query_name;
+

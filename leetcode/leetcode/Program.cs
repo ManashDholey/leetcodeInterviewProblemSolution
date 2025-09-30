@@ -208,3 +208,7 @@ int nCompute1 = 537;
 var decimalRep1 = computeDecimal.DecimalRepresentation(nCompute1);
 Console.WriteLine(string.Join(",", decimalRep1));
 computeDecimal.Dispose();
+TriangularSumOfAnArray triangularSumOfAnArray=new TriangularSumOfAnArray();
+int[] numsTriangular = { 1, 2, 3, 4, 5 };
+Console.WriteLine(triangularSumOfAnArray.TriangularSum(numsTriangular));
+triangularSumOfAnArray.Dispose();

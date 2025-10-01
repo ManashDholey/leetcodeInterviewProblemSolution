@@ -212,3 +212,7 @@ TriangularSumOfAnArray triangularSumOfAnArray=new TriangularSumOfAnArray();
 int[] numsTriangular = { 1, 2, 3, 4, 5 };
 Console.WriteLine(triangularSumOfAnArray.TriangularSum(numsTriangular));
 triangularSumOfAnArray.Dispose();
+WaterBottles waterBottles=new WaterBottles();
+Console.WriteLine(waterBottles.NumWaterBottles(15, 4));
+Console.WriteLine(waterBottles.NumWaterBottles(9, 3));
+waterBottles.Dispose();

@@ -595,4 +595,40 @@ SELECT
     , 2) AS poor_query_percentage
 FROM Queries
 GROUP BY query_name;
-
+GO
+CREATE TABLE UsersValidEmails (
+    user_id INT PRIMARY KEY,
+    email VARCHAR(255)
+);
+GO
+INSERT INTO UsersValidEmails (user_id, email) VALUES
+(1, 'alice@example.com'),
+(2, 'bob_at_example.com'),
+(3, 'charlie@example.net'),
+(4, 'david@domain.com'),
+(5, 'eve@invalid');
+GO
+SELECT user_id, email
+FROM UsersValidEmails
+WHERE -- Must contain exactly one '@'
+    LEN(email) - LEN(REPLACE(email, '@', '')) = 1
+    
+    -- Must end with '.com'
+    AND email LIKE '%.com'
+    
+    -- Part before '@' must be only letters, digits, or underscores
+    AND LEFT(email, CHARINDEX('@', email) - 1) NOT LIKE '%[^A-Za-z0-9_]%'
+    
+    -- Part between '@' and '.com' must be only letters
+    AND SUBSTRING(
+            email,
+            CHARINDEX('@', email) + 1,
+            LEN(email) - CHARINDEX('@', email) - 4
+        ) NOT LIKE '%[^A-Za-z]%'
+ORDER BY user_id;
+GO
+--# Write your MySQL query statement below
+--SELECT user_id, email
+--FROM Users
+--WHERE email REGEXP '^[A-Za-z0-9_]+@[A-Za-z]+\\.com$'
+--ORDER BY user_id;

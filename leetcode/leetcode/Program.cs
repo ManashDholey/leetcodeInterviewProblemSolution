@@ -215,4 +215,5 @@ triangularSumOfAnArray.Dispose();
 WaterBottles waterBottles=new WaterBottles();
 Console.WriteLine(waterBottles.NumWaterBottles(15, 4));
 Console.WriteLine(waterBottles.NumWaterBottles(9, 3));
+Console.WriteLine(waterBottles.MaxBottlesDrunkII(15, 4));
 waterBottles.Dispose();

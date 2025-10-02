@@ -5,6 +5,25 @@ namespace leetcode
     public  class WaterBottles : DisposableBase
     {
         /// <summary>
+        /// return the number of water bottles you can drink 
+        /// </summary>
+        /// <param name="numBottles"></param>
+        /// <param name="numExchange"></param>
+        /// <returns></returns>
+        public int MaxBottlesDrunkII(int numBottles, int numExchange)
+        {
+            int count = numBottles;
+            int emptyBottles = numBottles;
+            while (emptyBottles >= numExchange)
+            {
+                count += 1;
+                emptyBottles -=  numExchange;
+                emptyBottles++;
+                numExchange++;
+            }
+            return count;
+        }
+        /// <summary>
         /// return the number of water bottles you can drink
         /// </summary>
         /// <param name="numBottles"></param>

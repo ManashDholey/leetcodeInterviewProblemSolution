@@ -88,6 +88,7 @@ BEGIN
     SELECT COUNT(*) as total
     FROM prompt_templates pt
     INNER JOIN prompt_categories pc ON pt.prompt_categories_id = pc.id
+    INNER JOIN prompt_languages pl ON pt.language_id = pl.id
     WHERE 
         pt.is_active = 1
         AND (p_search IS NULL OR p_search = '' OR pt.title LIKE v_search_pattern OR pc.category_name LIKE v_search_pattern)
